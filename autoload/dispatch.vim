@@ -1326,7 +1326,7 @@ function! s:cwindow(request, all, copen, mods, event) abort
     let mods = 'botright ' . mods
   endif
   execute (mods) (a:copen ? 'copen' : 'cwindow') height
-  if !was_qf && s:is_quickfix() && a:copen !=# -2
+  if !get(g:, 'dispatch_keep_focus') && !was_qf && s:is_quickfix() && a:copen !=# -2
     wincmd p
   endif
 endfunction
